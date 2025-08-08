@@ -516,7 +516,7 @@ if (isset($_GET['logout'])) {
         .modal-content {
             background-color: white;
             margin: 5% auto;
-            padding: 0;
+            padding:0;
             border-radius: 8px;
             width: 90%;
             max-width: 500px;
@@ -588,6 +588,230 @@ if (isset($_GET['logout'])) {
         
         .empty-state p {
             margin: 10px 0;
+        }
+        
+        .elders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .elders-table th,
+        .elders-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .elders-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .elders-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-edit {
+            background-color: #3498db;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-edit:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Colored Stats Cards */
+        .stats-card.blue {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .stats-card.green {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .stats-card.orange {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .stats-card.red {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        /* Black numbers for colored stats cards */
+        .stats-card.blue .stats-number,
+        .stats-card.green .stats-number,
+        .stats-card.orange .stats-number,
+        .stats-card.red .stats-number {
+            color: white;
+        }
+        
+        /* Single Row Stats Grid for Allocation Management */
+        .allocation-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        /* Responsive design for smaller screens */
+        @media (max-width: 1200px) {
+            .allocation-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .allocation-stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Modern Modal Styles */
+        .modern-modal {
+            max-width: 600px;
+            width: 90%;
+            padding-top:-100px;
+            margin-top:0;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .modern-modal .modal-header {
+            background-color: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e9ecef;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modern-modal .close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #6c757d;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modern-modal .close:hover {
+            color: #495057;
+            background-color: #e9ecef;
+            border-radius: 50%;
+        }
+        
+        .modal-form-grid {
+            padding: 30px;
+            display: grid;
+            gap: 20px;
+        }
+        
+        .form-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-field label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-field input {
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            background-color: #fff;
+        }
+        
+        .form-field input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .modern-modal .modal-actions {
+            padding: 20px 30px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .btn-update {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-update:hover {
+            background-color: #219a52;
+        }
+        
+        .modern-modal .btn-cancel {
+            background-color: #95a5a6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .modern-modal .btn-cancel:hover {
+            background-color: #7f8c8d;
         }
     </style>
 </head>
@@ -688,16 +912,7 @@ if (isset($_GET['logout'])) {
                                     $elderCount = count($assignedElders);
                                     ?>
                                     <p><strong>Assigned Elders:</strong> <?php echo $elderCount; ?>/3</p>
-                                    <?php if ($elderCount > 0): ?>
-                                        <div class="assigned-elders">
-                                            <strong>Caring for:</strong>
-                                            <ul>
-                                                <?php foreach ($assignedElders as $assignedElder): ?>
-                                                    <li><?php echo htmlspecialchars($assignedElder['full_name'] ?? $assignedElder['name'] ?? 'Unknown'); ?></li>
-                                                <?php endforeach; ?>
-                                            </ul>
-                                        </div>
-                                    <?php endif; ?>
+
                                 <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
@@ -753,34 +968,39 @@ if (isset($_GET['logout'])) {
                     
                     <!-- Allocation Management Table -->
                     <div class="section" style="margin-top: 30px;">
-                        <div class="section-header">
-                            <h3>Allocation Management</h3>
-                            <div class="stats-cards" style="margin: 20px 0;">
-                                <?php 
-                                $allocations = getAllocations();
-                                $totalAllocations = count($allocations);
-                                $todayAllocations = count(array_filter($allocations, function($a) { return $a['date'] == date('Y-m-d'); }));
-                                $thisWeekAllocations = count(array_filter($allocations, function($a) { 
-                                    return strtotime($a['date']) >= strtotime('-7 days'); 
-                                }));
-                                ?>
-                                <div class="stat-card">
-                                    <div class="stat-number"><?php echo $totalAllocations; ?></div>
-                                    <div class="stat-label">Total Allocations</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-number"><?php echo $todayAllocations; ?></div>
-                                    <div class="stat-label">Today's Allocations</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-number"><?php echo $thisWeekAllocations; ?></div>
-                                    <div class="stat-label">This Week</div>
-                                </div>
+                        <h2>Allocation Management</h2>
+                        <div class="allocation-stats-grid" style="margin: 20px 0;">
+                            <?php 
+                            $allocations = getAllocations();
+                            $totalAllocations = count($allocations);
+                            $todayAllocations = count(array_filter($allocations, function($a) { return $a['date'] == date('Y-m-d'); }));
+                            $thisWeekAllocations = count(array_filter($allocations, function($a) { 
+                                return strtotime($a['date']) >= strtotime('-7 days'); 
+                            }));
+                            $activeAllocations = count(array_filter($allocations, function($a) { 
+                                return strtolower($a['elder_status']) == 'active'; 
+                            }));
+                            ?>
+                            <div class="stats-card blue">
+                                <h3 style="color: white ">Total Allocations</h3>
+                                <div class="stats-number"><?php echo $totalAllocations; ?></div>
+                            </div>
+                            <div class="stats-card green">
+                                <h3 style="color: white ">Today's Allocations</h3>
+                                <div class="stats-number"><?php echo $todayAllocations; ?></div>
+                            </div>
+                            <div class="stats-card blue">
+                                <h3 style="color: white ">This Week</h3>
+                                <div class="stats-number"><?php echo $thisWeekAllocations; ?></div>
+                            </div>
+                            <div class="stats-card orange">
+                                <h3 style="color: white ">Active Allocations</h3>
+                                <div class="stats-number"><?php echo $activeAllocations; ?></div>
                             </div>
                         </div>
                         
                         <?php if (!empty($allocations)): ?>
-                            <div class="table-container" style="margin-top: 20px;">
+                            <div class="table-container" style="overflow-x: auto;">
                                 <table class="elders-table">
                                     <thead>
                                         <tr>
@@ -807,12 +1027,10 @@ if (isset($_GET['logout'])) {
                                                 <td><?php echo date('M d, Y', strtotime($allocation['date'])); ?></td>
                                                 <td><?php echo date('g:i A', strtotime($allocation['time'])); ?></td>
                                                 <td class="actions">
-                                                    <button class="btn-edit" onclick="editAllocation(<?php echo $allocation['id']; ?>)" title="Edit Allocation">
-                                                        <i class="icon-edit">✏️</i>
-                                                    </button>
-                                                    <button class="btn-delete" onclick="deleteAllocation(<?php echo $allocation['id']; ?>)" title="Delete Allocation">
-                                                        <i class="icon-delete">🗑️</i>
-                                                    </button>
+                                                    <button class="btn-edit" onclick="editAllocation(<?php echo $allocation['id']; ?>)" title="Edit Allocation">Edit</button>
+                                                
+                                                    <button class="btn-delete" onclick="deleteAllocation(<?php echo $allocation['id']; ?>)" title="Delete Allocation">Delete</button>
+                                                    
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -833,40 +1051,44 @@ if (isset($_GET['logout'])) {
     
     <!-- Edit Allocation Modal -->
     <div id="editAllocationModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content modern-modal">
             <div class="modal-header">
-                <h3>Edit Allocation</h3>
+                <h2 style="color: #2c3e50; margin: 0; font-weight: 600;">Edit Allocation</h2>
                 <span class="close" onclick="closeEditModal()">&times;</span>
             </div>
             <form method="POST" id="editAllocationForm">
                 <input type="hidden" name="allocation_id" id="edit_allocation_id">
-                <div class="form-group">
-                    <label for="edit_caretaker_name">Caretaker Name:</label>
-                    <input type="text" name="edit_caretaker_name" id="edit_caretaker_name" required>
+                
+                <div class="modal-form-grid">
+                    <div class="form-field">
+                        <label for="edit_caretaker_name">Caretaker Name:</label>
+                        <input type="text" name="edit_caretaker_name" id="edit_caretaker_name" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="edit_elder_name">Elder Name:</label>
+                        <input type="text" name="edit_elder_name" id="edit_elder_name" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="edit_elder_status">Elder Status:</label>
+                        <input type="text" name="edit_elder_status" id="edit_elder_status" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="edit_allocation_date">Allocation Date:</label>
+                        <input type="date" name="edit_allocation_date" id="edit_allocation_date" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="edit_allocation_time">Allocation Time:</label>
+                        <input type="time" name="edit_allocation_time" id="edit_allocation_time" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="edit_elder_name">Elder Name:</label>
-                    <input type="text" name="edit_elder_name" id="edit_elder_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="edit_elder_status">Elder Status:</label>
-                    <select name="edit_elder_status" id="edit_elder_status" required>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="pending">Pending</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="edit_allocation_date">Date:</label>
-                    <input type="date" name="edit_allocation_date" id="edit_allocation_date" required>
-                </div>
-                <div class="form-group">
-                    <label for="edit_allocation_time">Time:</label>
-                    <input type="time" name="edit_allocation_time" id="edit_allocation_time" required>
-                </div>
+                
                 <div class="modal-actions">
                     <button type="button" class="btn-cancel" onclick="closeEditModal()">Cancel</button>
-                    <button type="submit" name="edit_allocation" class="btn">Update Allocation</button>
+                    <button type="submit" name="edit_allocation" class="btn-update">Update Allocation</button>
                 </div>
             </form>
         </div>

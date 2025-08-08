@@ -24,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = 'Password must be at least 6 characters long.';
     } elseif (!is_numeric($age) || $age < 1 || $age > 120) {
         $error = 'Please enter a valid age between 1 and 120.';
-    } elseif (!preg_match('/^[0-9+\-\s\(\)]+$/', $phoneno)) {
-        $error = 'Please enter a valid phone number.';
+    } elseif (!preg_match('/^[0-9]{10}$/', $phoneno)) {
+        $error = 'Phone number must contain exactly 10 digits.';
     } else {
         // Check if username already exists in caretaker table
         if (isset($db_connected) && $db_connected) {
@@ -34,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 // Save caretaker data to database
                 if (createCaretaker($username, $password, $name, $age, $address, $phoneno, $gender)) {
-                    $success = 'Registration successful! Your caretaker account has been created. You can now login with your credentials.';
+                    // Redirect to login page with success message
+                    header('Location: login.php?message=registration_success&username=' . urlencode($username));
+                    exit();
                 } else {
                     $error = 'Registration failed. Please try again.';
                 }

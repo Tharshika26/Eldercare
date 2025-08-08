@@ -619,7 +619,6 @@ $caretakerWorkload = getCaretakerWorkload();
                                             <td><?php echo htmlspecialchars(substr($caretaker['address'], 0, 50)) . (strlen($caretaker['address']) > 50 ? '...' : ''); ?></td>
                                             <td>
                                                 <div class="actions">
-                                                    <button onclick="editCaretaker(<?php echo $caretaker['id']; ?>)" class="btn btn-small">Edit</button>
                                                     <button onclick="deleteCaretaker(<?php echo $caretaker['id']; ?>)" class="btn btn-small btn-danger">Delete</button>
                                                 </div>
                                             </td>
@@ -634,52 +633,6 @@ $caretakerWorkload = getCaretakerWorkload();
         </div>
     </div>
     
-    <!-- Edit Caretaker Modal -->
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Edit Caretaker</h2>
-            <form method="POST" id="editForm">
-                <input type="hidden" id="edit_id" name="id">
-                <div class="form-group">
-                    <label for="edit_username">Username:</label>
-                    <input type="text" id="edit_username" name="username" required>
-                </div>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="edit_full_name">Full Name:</label>
-                        <input type="text" id="edit_full_name" name="full_name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_age">Age:</label>
-                        <input type="number" id="edit_age" name="age" min="18" max="70" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_gender">Gender:</label>
-                        <select id="edit_gender" name="gender" required>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_phone_number">Phone Number:</label>
-                        <input type="tel" id="edit_phone_number" name="phone_number" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="edit_address">Address:</label>
-                    <textarea id="edit_address" name="address" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="edit_password">New Password (leave blank to keep current):</label>
-                    <input type="password" id="edit_password" name="password">
-                    <div class="password-note">Leave empty if you don't want to change the password</div>
-                </div>
-                <button type="submit" name="update_caretaker" class="btn btn-success">Update Caretaker</button>
-            </form>
-        </div>
-    </div>
     
     <!-- Delete Confirmation Modal -->
     <div id="deleteModal" class="modal">

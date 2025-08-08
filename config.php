@@ -125,10 +125,23 @@ function getEldersByCaretakerFromDB($caretakerId) {
         // Approach 1: Search by caretaker_name (full_name)
         if ($caretaker_name) {
             $stmt = $pdo->prepare("
-                SELECT e.*, a.elder_status as allocation_status, a.date as allocation_date, a.time as allocation_time,
-                       a.id as allocation_id, a.caretaker_name as assigned_caretaker, a.elder_name
+                SELECT 
+                    COALESCE(e.id, 0) as id,
+                    COALESCE(e.username, a.elder_name) as username,
+                    COALESCE(e.full_name, a.elder_name) as full_name,
+                    COALESCE(e.age, 0) as age,
+                    COALESCE(e.gender, 'N/A') as gender,
+                    COALESCE(e.address, 'N/A') as address,
+                    COALESCE(e.phone_number, 'N/A') as phone_number,
+                    COALESCE(e.status, a.elder_status) as status,
+                    a.elder_status as allocation_status, 
+                    a.date as allocation_date, 
+                    a.time as allocation_time,
+                    a.id as allocation_id, 
+                    a.caretaker_name as assigned_caretaker, 
+                    a.elder_name as elder_name
                 FROM allocate_the_caretaker a 
-                LEFT JOIN elders e ON a.elder_name = e.username 
+                LEFT JOIN elders e ON (a.elder_name = e.username OR a.elder_name = e.full_name)
                 WHERE a.caretaker_name = ? 
                 ORDER BY a.date DESC, a.time DESC
             ");
@@ -140,10 +153,23 @@ function getEldersByCaretakerFromDB($caretakerId) {
         // Approach 2: If no results, try searching by username
         if (empty($allocated_elders) && $caretaker_username) {
             $stmt = $pdo->prepare("
-                SELECT e.*, a.elder_status as allocation_status, a.date as allocation_date, a.time as allocation_time,
-                       a.id as allocation_id, a.caretaker_name as assigned_caretaker, a.elder_name
+                SELECT 
+                    COALESCE(e.id, 0) as id,
+                    COALESCE(e.username, a.elder_name) as username,
+                    COALESCE(e.full_name, a.elder_name) as full_name,
+                    COALESCE(e.age, 0) as age,
+                    COALESCE(e.gender, 'N/A') as gender,
+                    COALESCE(e.address, 'N/A') as address,
+                    COALESCE(e.phone_number, 'N/A') as phone_number,
+                    COALESCE(e.status, a.elder_status) as status,
+                    a.elder_status as allocation_status, 
+                    a.date as allocation_date, 
+                    a.time as allocation_time,
+                    a.id as allocation_id, 
+                    a.caretaker_name as assigned_caretaker, 
+                    a.elder_name as elder_name
                 FROM allocate_the_caretaker a 
-                LEFT JOIN elders e ON a.elder_name = e.username 
+                LEFT JOIN elders e ON (a.elder_name = e.username OR a.elder_name = e.full_name)
                 WHERE a.caretaker_name = ? 
                 ORDER BY a.date DESC, a.time DESC
             ");
@@ -155,10 +181,23 @@ function getEldersByCaretakerFromDB($caretakerId) {
         // Approach 3: If still no results, search by ID as string
         if (empty($allocated_elders)) {
             $stmt = $pdo->prepare("
-                SELECT e.*, a.elder_status as allocation_status, a.date as allocation_date, a.time as allocation_time,
-                       a.id as allocation_id, a.caretaker_name as assigned_caretaker, a.elder_name
+                SELECT 
+                    COALESCE(e.id, 0) as id,
+                    COALESCE(e.username, a.elder_name) as username,
+                    COALESCE(e.full_name, a.elder_name) as full_name,
+                    COALESCE(e.age, 0) as age,
+                    COALESCE(e.gender, 'N/A') as gender,
+                    COALESCE(e.address, 'N/A') as address,
+                    COALESCE(e.phone_number, 'N/A') as phone_number,
+                    COALESCE(e.status, a.elder_status) as status,
+                    a.elder_status as allocation_status, 
+                    a.date as allocation_date, 
+                    a.time as allocation_time,
+                    a.id as allocation_id, 
+                    a.caretaker_name as assigned_caretaker, 
+                    a.elder_name as elder_name
                 FROM allocate_the_caretaker a 
-                LEFT JOIN elders e ON a.elder_name = e.username 
+                LEFT JOIN elders e ON (a.elder_name = e.username OR a.elder_name = e.full_name)
                 WHERE a.caretaker_name = ? 
                 ORDER BY a.date DESC, a.time DESC
             ");

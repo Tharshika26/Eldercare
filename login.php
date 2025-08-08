@@ -84,23 +84,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Handle messages from URL parameters
 $message = '';
 $messageType = 'error';
-if (isset($_GET['message'])) {
-    switch ($_GET['message']) {
-        case 'logged_out':
-            $message = 'You have been successfully logged out.';
-            $messageType = 'success';
-            break;
-        case 'unauthorized':
-            $message = 'You are not authorized to access that page.';
-            $messageType = 'error';
-            break;
-    }
-}
+
 if (isset($_GET['error'])) {
     switch ($_GET['error']) {
         case 'unauthorized':
             $message = 'You are not authorized to access that page.';
             $messageType = 'error';
+            break;
+    }
+} elseif (isset($_GET['message'])) {
+    switch ($_GET['message']) {
+        case 'registration_success':
+            $username = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
+            $message = 'Registration successful! Welcome ' . $username . '! Your caretaker account has been created. Please login with your credentials.';
+            $messageType = 'success';
+            break;
+        case 'logged_out':
+            $message = 'You have been successfully logged out.';
+            $messageType = 'success';
             break;
     }
 }
@@ -186,6 +187,15 @@ if (isset($_GET['error'])) {
         
         .error {
             background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .success {
+            background-color: #27ae60;
             color: white;
             padding: 10px;
             border-radius: 5px;

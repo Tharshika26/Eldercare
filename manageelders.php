@@ -577,12 +577,7 @@ function deleteElderLocal($id) {
                             </div>
                             <div class="form-group">
                                 <label for="status">Status:</label>
-                                <select id="status" name="status" required>
-                                    <option value="">Select Status</option>
-                                    <option value="Active">Active</option>
-                                    <option value="Inactive">Inactive</option>
-                                    <option value="Pending">Pending</option>
-                                </select>
+                                <input type="text" name="status" id="status" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -687,11 +682,7 @@ function deleteElderLocal($id) {
                     </div>
                     <div class="form-group">
                         <label for="edit_status">Status:</label>
-                        <select id="edit_status" name="status" required>
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
-                            <option value="Pending">Pending</option>
-                        </select>
+                        <input type="text" id="edit_status" name="status" required>
                     </div>
                 </div>
                 <div class="form-group">
