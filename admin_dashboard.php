@@ -813,6 +813,115 @@ if (isset($_GET['logout'])) {
         .modern-modal .btn-cancel:hover {
             background-color: #7f8c8d;
         }
+        
+        /* Enhanced DateTime Input Fields */
+        .datetime-field {
+            position: relative;
+        }
+        
+        .datetime-field label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 14px;
+        }
+        
+        .date-input-wrapper,
+        .time-input-wrapper {
+            position: relative;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .date-input-wrapper:hover,
+        .time-input-wrapper:hover {
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .datetime-field input[type="date"],
+        .datetime-field input[type="time"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            background: white;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .datetime-field input[type="date"]:focus,
+        .datetime-field input[type="time"]:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1), inset 0 1px 3px rgba(0,0,0,0.1);
+            background: #fdfdfd;
+        }
+        
+        .input-helper {
+            display: block;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 6px;
+            margin-left: 4px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        /* Enhanced Allocate Button */
+        .allocate-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            min-width: 180px;
+        }
+        
+        .allocate-btn:hover {
+            background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(39, 174, 96, 0.4);
+        }
+        
+        .allocate-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-icon {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        /* Responsive adjustments for datetime fields */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .datetime-field input[type="date"],
+            .datetime-field input[type="time"] {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
     </style>
 </head>
 <body>
@@ -951,16 +1060,25 @@ if (isset($_GET['logout'])) {
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group">
-                                    <label for="allocation_date">Allocation Date:</label>
-                                    <input type="date" name="allocation_date" id="allocation_date" value="<?php echo date('Y-m-d'); ?>" required>
+                                <div class="form-group datetime-field">
+                                    <label for="allocation_date"> Allocation Date:</label>
+                                    <div class="date-input-wrapper">
+                                        <input type="date" name="allocation_date" id="allocation_date" value="<?php echo date('Y-m-d'); ?>" required>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group datetime-field">
+                                    <label for="allocation_time"> Allocation Time:</label>
+                                    <div class="time-input-wrapper">
+                                        <input type="time" name="allocation_time" id="allocation_time" value="<?php echo date('H:i'); ?>" required>
+                                    
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="allocation_time">Allocation Time:</label>
-                                    <input type="time" name="allocation_time" id="allocation_time" value="<?php echo date('H:i'); ?>" required>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" name="allocate" class="btn">Allocate</button>
+                                    <button type="submit" name="allocate" class="btn allocate-btn">
+                                        
+                                        Allocate Caretaker
+                                    </button>
                                 </div>
                             </div>
                         </form>
