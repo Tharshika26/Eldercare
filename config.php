@@ -224,7 +224,14 @@ function getUnassignedEldersFromDB() {
     if (!$db_connected) return [];
     
     try {
-        $stmt = $pdo->query("SELECT * FROM elders WHERE caretaker_id IS NULL OR caretaker_id = 0 ORDER BY full_name");
+        // Get elders who are not in the allocate_the_caretaker table
+        $stmt = $pdo->query("
+            SELECT e.* 
+            FROM elders e 
+            LEFT JOIN allocate_the_caretaker a ON (e.username = a.elder_name OR e.full_name = a.elder_name)
+            WHERE a.elder_name IS NULL 
+            ORDER BY e.full_name
+        ");
         return $stmt->fetchAll();
     } catch(PDOException $e) {
         error_log("Error fetching unassigned elders: " . $e->getMessage());
@@ -237,11 +244,11 @@ function getAvailableCaretakersFromDB() {
     if (!$db_connected) return [];
     
     try {
-        // Get caretakers with less than 3 assigned elders
+        // Get caretakers with less than 3 assigned elders based on allocate_the_caretaker table
         $stmt = $pdo->query("
-            SELECT c.*, COUNT(e.id) as assigned_count 
+            SELECT c.*, COUNT(a.id) as assigned_count 
             FROM caretaker c 
-            LEFT JOIN elders e ON c.id = e.caretaker_id 
+            LEFT JOIN allocate_the_caretaker a ON c.full_name = a.caretaker_name 
             GROUP BY c.id 
             HAVING assigned_count < 3 
             ORDER BY c.full_name
