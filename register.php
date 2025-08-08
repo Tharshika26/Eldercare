@@ -84,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             color: #2c3e50;
             margin-bottom: 30px;
+            font-size: 35px;
         }
         
         .form-group {

@@ -143,6 +143,7 @@ if (isset($_GET['error'])) {
             text-align: center;
             color: #2c3e50;
             margin-bottom: 30px;
+            font-size: 35px;
         }
         
         .form-group {
